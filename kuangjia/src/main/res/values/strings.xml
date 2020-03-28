@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">软件框架</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">第一个Fragment页面</string>
+    <string name="er_blank_fragment">第二个Fragment页面</string>
+    <string name="san_blank_fragment">第三个Fragment页面</string>
+    <string name="si_blank_fragment">第四个Fragment页面</string>
+</resources>
