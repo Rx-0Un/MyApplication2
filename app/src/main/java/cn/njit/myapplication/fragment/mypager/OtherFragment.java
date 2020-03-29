@@ -14,7 +14,7 @@ public class OtherFragment extends BaseFragment {
 
     private static final String TAG = OtherFragment.class.getSimpleName();//"CommonFrameFragment"
 
-    RecyclerView mRvMine;
+
 
 
     @Override

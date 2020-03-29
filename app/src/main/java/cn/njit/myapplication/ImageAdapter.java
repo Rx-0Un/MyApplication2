@@ -30,7 +30,19 @@ public class ImageAdapter extends BannerAdapter<Integer, ImageAdapter.BannerView
 
     @Override
     public void onBindView(BannerViewHolder holder, Integer data, int position, int size) {
-//        holder.imageView.setImageResource(R.drawable.alipay_fill);
+        switch (position) {
+            case 0:
+                holder.imageView.setImageResource(R.drawable.images1);
+                break;
+            case 1:
+                holder.imageView.setImageResource(R.drawable.images2);
+                break;
+            case 2:
+                holder.imageView.setImageResource(R.drawable.images3);
+                break;
+            default:
+                break;
+        }
     }
 
 

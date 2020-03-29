@@ -24,7 +24,7 @@
                 android:layout_centerInParent="true"
                 android:drawableTop="@mipmap/bank_card_2_line"
                 android:gravity="center"
-                android:text="卡券" />
+                android:text="优惠券" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -110,7 +110,7 @@
                     android:layout_centerInParent="true"
                     android:drawableTop="@mipmap/bank_card_line"
                     android:gravity="center"
-                    android:text="月卡续费" />
+                    android:text="月卡" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -131,7 +131,7 @@
 
             <RelativeLayout
                 android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_height="match_parent"
                 android:layout_margin="0.5dp"
                 android:layout_weight="1"
                 android:background="#ffffff">
@@ -140,7 +140,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:drawableTop="@mipmap/parking_box_line"
+                    android:drawableTop="@mipmap/parking_info"
                     android:gravity="center"
                     android:text="停车信息" />
             </RelativeLayout>
@@ -182,7 +182,7 @@
                     android:layout_centerInParent="true"
                     android:drawableTop="@mipmap/bill_line"
                     android:gravity="center"
-                    android:text="发票" />
+                    android:text="生成发票" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -198,7 +198,7 @@
                     android:layout_centerInParent="true"
                     android:drawableTop="@mipmap/car_line"
                     android:gravity="center"
-                    android:text="我的车辆" />
+                    android:text="车辆" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -214,7 +214,7 @@
                     android:layout_centerInParent="true"
                     android:drawableTop="@mipmap/customer_service_2_fill"
                     android:gravity="center"
-                    android:text="客服" />
+                    android:text="看点" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -228,8 +228,10 @@
         android:background="@drawable/search" />
 
     <com.youth.banner.Banner
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@id/searchView" />
+        android:layout_height="250dp"
+        android:layout_below="@id/searchView"
+        app:banner_orientation="horizontal"/>
 </RelativeLayout>
