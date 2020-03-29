@@ -1,14 +1,12 @@
-package cn.njit.myapplication;
+package cn.njit.myapplication.fragment.mypager;
 
-import android.graphics.Color;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
+
+import cn.njit.myapplication.R;
+import cn.njit.myapplication.fragment.BaseFragment;
 
 
 public class OtherFragment extends BaseFragment {

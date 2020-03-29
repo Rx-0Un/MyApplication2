@@ -1,10 +1,12 @@
-package cn.njit.myapplication;
+package cn.njit.myapplication.fragment.nearfragment;
 
 import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
+
+import cn.njit.myapplication.fragment.BaseFragment;
 
 
 public class CustomFragment extends BaseFragment {

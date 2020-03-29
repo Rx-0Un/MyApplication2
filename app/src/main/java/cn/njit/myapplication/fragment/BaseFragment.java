@@ -1,4 +1,4 @@
-package cn.njit.myapplication;
+package cn.njit.myapplication.fragment;
 
 import android.content.Context;
 import android.os.Bundle;

@@ -12,6 +12,11 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.njit.myapplication.fragment.BaseFragment;
+import cn.njit.myapplication.fragment.mainfragment.CommonFrameFragment;
+import cn.njit.myapplication.fragment.nearfragment.CustomFragment;
+import cn.njit.myapplication.fragment.mypager.OtherFragment;
+
 public class MainActivity  extends FragmentActivity {
 
     private RadioGroup mRg_main;
