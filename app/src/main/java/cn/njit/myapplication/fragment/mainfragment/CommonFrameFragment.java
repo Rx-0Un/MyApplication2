@@ -1,7 +1,14 @@
 package cn.njit.myapplication.fragment.mainfragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+
+import androidx.appcompat.widget.SearchView;
 
 import com.google.gson.Gson;
 import com.youth.banner.Banner;
@@ -20,18 +27,32 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class CommonFrameFragment extends BaseFragment {
+public class CommonFrameFragment extends BaseFragment implements View.OnClickListener {
 
     private static final String TAG = CommonFrameFragment.class.getSimpleName();//"CommonFrameFragment"
 
 
+    GridLayout gridLayout2;
+
+    LinearLayout linearLayout;
+
+    LinearLayout linearLayout2;
+
+    RelativeLayout gridLayout;
+
+    SearchView searchView;
+
+    RelativeLayout layoutManage;
+
+
     private Banner banner;
+
 
     @Override
     protected View initView() {
         Log.e(TAG, "常用框架Fragment页面被初始化了...");
         View view = View.inflate(mContext, R.layout.fragment_common_frame, null);
-        androidx.appcompat.widget.SearchView searchView = view.findViewById(R.id.searchView);
+        SearchView searchView = view.findViewById(R.id.searchView);
         searchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +84,8 @@ public class CommonFrameFragment extends BaseFragment {
             }
         });
         banner = view.findViewById(R.id.banner);
-
+        layoutManage = view.findViewById(R.id.layout_manage);
+        layoutManage.setOnClickListener(this);
         initBanner();
         return view;
     }
@@ -81,5 +103,17 @@ public class CommonFrameFragment extends BaseFragment {
         list.add(R.mipmap.parking_box_line);
         list.add(R.mipmap.parking_box_line);
         banner.setAdapter(new ImageAdapter(list)).start();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.layout_manage:
+                Uri uri = Uri.parse("http://218.244.153.72:8080/index");
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                break;
+            default:
+                break;
+        }
     }
 }

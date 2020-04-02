@@ -41,6 +41,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/layout_manage"
             android:layout_width="100dp"
             android:layout_height="100dp">
 
