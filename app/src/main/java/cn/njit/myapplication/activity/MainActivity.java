@@ -1,4 +1,4 @@
-package cn.njit.myapplication;
+package cn.njit.myapplication.activity;
 
 import android.os.Bundle;
 
@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.njit.myapplication.R;
 import cn.njit.myapplication.fragment.BaseFragment;
 import cn.njit.myapplication.fragment.mainfragment.CommonFrameFragment;
 import cn.njit.myapplication.fragment.nearfragment.CustomFragment;

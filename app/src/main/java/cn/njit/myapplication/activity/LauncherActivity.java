@@ -1,9 +1,11 @@
-package cn.njit.myapplication;
+package cn.njit.myapplication.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import cn.njit.myapplication.R;
 
 public class LauncherActivity extends Activity {
 

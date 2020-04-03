@@ -1,4 +1,4 @@
-package cn.njit.myapplication;
+package cn.njit.myapplication.tool;
 
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.youth.banner.adapter.BannerAdapter;
 
 import java.util.List;
+
+import cn.njit.myapplication.R;
 
 public class ImageAdapter extends BannerAdapter<Integer, ImageAdapter.BannerViewHolder> {
     public ImageAdapter(List<Integer> mDatas) {

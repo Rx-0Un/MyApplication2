@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import cn.njit.myapplication.ImageAdapter;
+import cn.njit.myapplication.tool.ImageAdapter;
 import cn.njit.myapplication.R;
 import cn.njit.myapplication.fragment.BaseFragment;
 import okhttp3.Call;

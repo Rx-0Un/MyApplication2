@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#343a40"
-    tools:context="cn.njit.myapplication.LauncherActivity">
+    tools:context="cn.njit.myapplication.activity.LauncherActivity">
 
     <ImageView
         android:id="@+id/iv_icon"
