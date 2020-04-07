@@ -1,18 +1,25 @@
 package cn.njit.myapplication.activity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import cn.njit.myapplication.R;
+import cn.njit.myapplication.presenter.presenterImpl.LoginPresenterImpl;
+import cn.njit.myapplication.presenter.presenterInterface.LoginPresenter;
+import cn.njit.myapplication.view.LoginView;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, LoginView {
 
     //按钮用于切换
     TextView tv_register;
@@ -30,12 +37,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     TextView login;
     TextView register;
 
+    //进度条
+    ProgressBar progressBar;
+
+
+    private LoginPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
         initListener();
+
+        presenter = new LoginPresenterImpl(this);
     }
 
     public void initView() {
@@ -50,6 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         et_register_password_again = findViewById(R.id.et_register_password_again);
         login = findViewById(R.id.login);
         register = findViewById(R.id.register);
+        progressBar = findViewById(R.id.progressBar);
     }
 
     public void initListener() {
@@ -71,8 +87,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.login:
                 Log.v("R.id.login", "点击登录");
-                doLogin(et_login_name.getText().toString(),
-                        et_login_password.getText().toString());
+                presenter.validateCredentials(et_login_name.getText().toString(), et_login_password.getText().toString());
                 break;
             case R.id.register:
                 Log.v("R.id.register", "点击注册");
@@ -81,7 +96,43 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
-    public void doLogin(String phone,String password){
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+    }
+
+    @Override
+    public void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setUsernameError() {
+
+    }
+
+    @Override
+    public void setPasswordError() {
+
+    }
+
+    @Override
+    public void navigateToHome() {
+        Handler mainHandler = new Handler(Looper.getMainLooper());
+        mainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                hideProgress();
+                Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }

@@ -5,6 +5,14 @@
     android:layout_height="match_parent"
     android:background="#343a40"
     tools:context=".activity.LoginActivity">
+    <ProgressBar
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
     <RelativeLayout
         android:id="@+id/layout_login"
         android:layout_width="match_parent"
