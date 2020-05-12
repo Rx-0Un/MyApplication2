@@ -3,6 +3,7 @@
     package="cn.njit.myapplication">
 
     <application
+        android:name=".application.UserApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,8 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.LoginActivity"></activity>
-
+        <activity android:name=".activity.login.PersonActivity"></activity>
+        <activity android:name=".activity.car.CarActivity" />
+        <activity android:name=".activity.charge.ChargeActivity" />
+        <activity android:name=".activity.coupon.CouponActivity" />
+        <activity android:name=".activity.login.LoginActivity" />
+        <activity android:name=".activity.YueActivity" />
         <activity android:name=".activity.LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,17 +24,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
+
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="a9f9b575e93d7f753053a71df70fb592" />
 
         <service android:name="com.amap.api.location.APSService" />
     </application>
-
     <permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

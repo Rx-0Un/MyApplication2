@@ -1,5 +1,7 @@
 package cn.njit.myapplication.presenter.presenterImpl;
 
+import cn.njit.myapplication.Bean.LoginBean;
+import cn.njit.myapplication.Bean.RegisterResult;
 import cn.njit.myapplication.listener.OnLoginFinishedListener;
 import cn.njit.myapplication.model.modelImpl.LoginModelImpl;
 import cn.njit.myapplication.model.modelInterface.LoginModel;
@@ -25,6 +27,18 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
     }
 
     @Override
+    public void addNewUser(String username, String password, String password_again) {
+        if (loginView != null) {
+            loginView.showProgress();
+        }
+        if (password.equals(password_again)) {
+            loginModel.addNewUser(username, password, password_again, this);
+        } else {
+            loginView.setPasswordNotEqual();
+        }
+    }
+
+    @Override
     public void onDestroy() {
         loginView = null;
     }
@@ -46,9 +60,26 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(LoginBean loginBean) {
         if (loginView != null) {
-            loginView.navigateToHome();
+            if (loginBean.getLoginCode() == 1) {
+                loginView.navigateToHome();
+            } else if ("用户不存在".equals(loginBean.getLoginDetail())) {
+                loginView.setUsernameError();
+            } else {
+                loginView.setPasswordError();
+            }
+        }
+    }
+
+    @Override
+    public void setRegisteredSuccess(RegisterResult registerResult) {
+        if (loginView != null) {
+            if (registerResult.getRegisterCode() == 1) {
+                loginView.setUserExist();
+            } else {
+                loginView.setRegisteredSuccess();
+            }
         }
     }
 }

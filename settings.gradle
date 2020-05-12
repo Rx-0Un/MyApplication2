@@ -1,1 +1,1 @@
-include ':app', ':kuangjia'
+include ':app', ':kuangjia', ':JPushExample'

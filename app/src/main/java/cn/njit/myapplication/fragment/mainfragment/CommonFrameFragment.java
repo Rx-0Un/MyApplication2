@@ -18,9 +18,12 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import cn.njit.myapplication.tool.ImageAdapter;
 import cn.njit.myapplication.R;
+import cn.njit.myapplication.activity.YueActivity;
+import cn.njit.myapplication.activity.charge.ChargeActivity;
+import cn.njit.myapplication.activity.coupon.CouponActivity;
 import cn.njit.myapplication.fragment.BaseFragment;
+import cn.njit.myapplication.tool.ImageAdapter;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -43,8 +46,9 @@ public class CommonFrameFragment extends BaseFragment implements View.OnClickLis
     SearchView searchView;
 
     RelativeLayout layoutManage;
-
-
+    RelativeLayout layoutCouponManage;
+    RelativeLayout layoutWatch;
+    RelativeLayout layoutCharge;
     private Banner banner;
 
 
@@ -86,6 +90,12 @@ public class CommonFrameFragment extends BaseFragment implements View.OnClickLis
         banner = view.findViewById(R.id.banner);
         layoutManage = view.findViewById(R.id.layout_manage);
         layoutManage.setOnClickListener(this);
+        layoutCouponManage = view.findViewById(R.id.layout_coupon_manage);
+        layoutCouponManage.setOnClickListener(this);
+        layoutWatch = view.findViewById(R.id.layout_watch);
+        layoutWatch.setOnClickListener(this);
+        layoutCharge=view.findViewById(R.id.layout_charge);
+        layoutCharge.setOnClickListener(this);
         initBanner();
         return view;
     }
@@ -111,6 +121,16 @@ public class CommonFrameFragment extends BaseFragment implements View.OnClickLis
             case R.id.layout_manage:
                 Uri uri = Uri.parse("http://218.244.153.72:8080/index");
                 startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                break;
+            case R.id.layout_coupon_manage:
+                Intent intent = new Intent(mContext, CouponActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.layout_watch:
+                startActivity(new Intent(mContext, YueActivity.class));
+                break;
+            case R.id.layout_charge:
+                startActivity(new Intent(mContext, ChargeActivity.class));
                 break;
             default:
                 break;

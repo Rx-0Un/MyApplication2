@@ -158,7 +158,7 @@ public class CustomFragment extends BaseFragment implements LocationSource, AMap
                         + aMapLocation.getErrorCode() + ", errInfo:"
                         + aMapLocation.getErrorInfo());
 
-                Toast.makeText(mContext, "定位失败", Toast.LENGTH_LONG).show();
+//                Toast.makeText(mContext, "定位失败", Toast.LENGTH_LONG).show();
             }
         }
     }

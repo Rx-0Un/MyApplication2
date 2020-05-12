@@ -10,4 +10,10 @@ public interface LoginView {
     void setPasswordError();
 
     void navigateToHome();
+
+    void setPasswordNotEqual();
+
+    void setUserExist();
+
+    void setRegisteredSuccess();
 }

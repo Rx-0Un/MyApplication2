@@ -1,6 +1,5 @@
-package cn.njit.myapplication.activity;
+package cn.njit.myapplication.activity.login;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import cn.njit.myapplication.R;
+import cn.njit.myapplication.application.UserApplication;
 import cn.njit.myapplication.presenter.presenterImpl.LoginPresenterImpl;
 import cn.njit.myapplication.presenter.presenterInterface.LoginPresenter;
 import cn.njit.myapplication.view.LoginView;
@@ -49,7 +49,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         initView();
         initListener();
-
         presenter = new LoginPresenterImpl(this);
     }
 
@@ -91,6 +90,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.register:
                 Log.v("R.id.register", "点击注册");
+                presenter.addNewUser(
+                        et_register_phone.getText().toString(),
+                        et_register_password.getText().toString(),
+                        et_register_password_again.getText().toString());
+
                 break;
             default:
                 break;
@@ -115,12 +119,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void setUsernameError() {
-
+        Handler mainHandler = new Handler(Looper.getMainLooper());
+        mainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                hideProgress();
+                Toast.makeText(LoginActivity.this, "用户不存在", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     public void setPasswordError() {
-
+        Handler mainHandler = new Handler(Looper.getMainLooper());
+        mainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                hideProgress();
+                Toast.makeText(LoginActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -131,8 +149,52 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void run() {
                 hideProgress();
                 Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                UserApplication app=(UserApplication)getApplication();
+                app.setUserPhone(et_login_name.getText().toString());
             }
         });
+        this.finish();
+    }
 
+    @Override
+    public void setPasswordNotEqual() {
+        Handler mainHandler = new Handler(Looper.getMainLooper());
+        mainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                hideProgress();
+                Toast.makeText(LoginActivity.this, "两个密码不一致", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void setUserExist() {
+        Handler mainHandler = new Handler(Looper.getMainLooper());
+        mainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                hideProgress();
+                Toast.makeText(LoginActivity.this, "用户已经存在", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void setRegisteredSuccess() {
+        Handler mainHandler = new Handler(Looper.getMainLooper());
+        mainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                hideProgress();
+                Toast.makeText(LoginActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                et_login_name.setText(et_register_phone.getText());
+                et_login_password.setText(et_login_password.getText());
+                et_register_phone.setText("");
+                et_register_password.setText("");
+                et_register_password_again.setText("");
+                layout_register.setVisibility(View.GONE);
+            }
+        });
     }
 }

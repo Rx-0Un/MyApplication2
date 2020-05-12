@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#343a40"
-    tools:context=".activity.LoginActivity">
+    tools:context=".activity.login.LoginActivity">
     <ProgressBar
         android:visibility="gone"
         android:layout_centerInParent="true"
