@@ -88,6 +88,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/layout_parking_space"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_margin="0.5dp"
@@ -144,6 +145,7 @@
             android:orientation="horizontal">
 
             <RelativeLayout
+                android:id="@+id/layout_order"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_margin="0.5dp"

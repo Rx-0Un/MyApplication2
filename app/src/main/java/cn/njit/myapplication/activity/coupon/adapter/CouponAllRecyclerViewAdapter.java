@@ -64,5 +64,4 @@ public class CouponAllRecyclerViewAdapter extends RecyclerView.Adapter {
         }
     }
 
-
 }

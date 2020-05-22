@@ -61,7 +61,7 @@ public class CustomFragment extends BaseFragment implements LocationSource, AMap
 
         //定位的小图标 默认是蓝点 这里自定义一团火，其实就是一张图片
         MyLocationStyle myLocationStyle = new MyLocationStyle();
-        myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource(R.mipmap.admin_line));
+        myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource(R.mipmap.map));
         myLocationStyle.radiusFillColor(android.R.color.transparent);
         myLocationStyle.strokeColor(android.R.color.transparent);
         aMap.setMyLocationStyle(myLocationStyle);

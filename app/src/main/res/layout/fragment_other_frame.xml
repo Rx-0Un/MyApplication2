@@ -4,7 +4,14 @@
     android:layout_height="match_parent"
     android:background="#F1F5FB"
     android:orientation="vertical">
-
+    <ProgressBar
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
     <LinearLayout
         android:id="@+id/relative_layout_info"
         android:layout_width="match_parent"
@@ -62,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_card"
                 android:layout_centerInParent="true"
-                android:text="月卡"
+                android:text="停车位"
                 android:textSize="15sp" />
         </RelativeLayout>
         <RelativeLayout
@@ -99,12 +106,13 @@
         android:layout_height="150dp"
         android:background="@drawable/user_bg">
         <TextView
+            android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/profile_image"
             android:layout_centerInParent="true"
             android:text="user"
-            android:textSize="15sp" />
+            android:textSize="25sp" />
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
@@ -176,55 +184,12 @@
                 app:civ_border_color="#ff000000"
                 app:civ_border_width="0.5dp" />
         </RelativeLayout>
-        //我的发票
-        <RelativeLayout
-            android:id="@+id/relative_layout_invoice"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_below="@id/relative_layout_bill">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="16dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="25dp"
-                android:src="@mipmap/me_arrow_right" />
-
-            <TextView
-                android:id="@+id/tv_my_invoice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="16dp"
-                android:layout_toRightOf="@id/iv_my_invoice"
-                android:text="我的发票"
-                android:textSize="15sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_alignLeft="@id/tv_my_invoice"
-                android:layout_alignParentBottom="true"
-                android:layout_marginRight="25dp"
-                android:background="#C0C0C0" />
-
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/iv_my_invoice"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="16dp"
-                android:src="@drawable/user_line"
-                app:civ_border_color="#ff000000"
-                app:civ_border_width="0.5dp" />
-        </RelativeLayout>
         //我的爱车
         <RelativeLayout
             android:id="@+id/relative_layout_car"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_below="@id/relative_layout_invoice">
+            android:layout_below="@id/relative_layout_bill">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -446,6 +411,7 @@
         </RelativeLayout>
     </RelativeLayout>
     <TextView
+        android:id="@+id/tv_exit"
         android:padding="5dp"
         android:background="#CD5C5C"
         android:layout_marginTop="10dp"
@@ -454,6 +420,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
+        android:visibility="gone"
         android:textColor="	#ffffff"
         android:text="退出登录"/>
 

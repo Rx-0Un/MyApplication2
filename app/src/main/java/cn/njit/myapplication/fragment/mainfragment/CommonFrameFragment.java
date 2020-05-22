@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.SearchView;
 
@@ -22,6 +23,8 @@ import cn.njit.myapplication.R;
 import cn.njit.myapplication.activity.YueActivity;
 import cn.njit.myapplication.activity.charge.ChargeActivity;
 import cn.njit.myapplication.activity.coupon.CouponActivity;
+import cn.njit.myapplication.activity.order.OrderActivity;
+import cn.njit.myapplication.activity.parkingSpace.ParkingSpaceActivity;
 import cn.njit.myapplication.fragment.BaseFragment;
 import cn.njit.myapplication.tool.ImageAdapter;
 import okhttp3.Call;
@@ -49,6 +52,8 @@ public class CommonFrameFragment extends BaseFragment implements View.OnClickLis
     RelativeLayout layoutCouponManage;
     RelativeLayout layoutWatch;
     RelativeLayout layoutCharge;
+    RelativeLayout layoutOrder;
+    RelativeLayout layoutPrkingSpace;
     private Banner banner;
 
 
@@ -96,6 +101,10 @@ public class CommonFrameFragment extends BaseFragment implements View.OnClickLis
         layoutWatch.setOnClickListener(this);
         layoutCharge=view.findViewById(R.id.layout_charge);
         layoutCharge.setOnClickListener(this);
+        layoutOrder=view.findViewById(R.id.layout_order);
+        layoutOrder.setOnClickListener(this);
+        layoutPrkingSpace=view.findViewById(R.id.layout_parking_space);
+        layoutPrkingSpace.setOnClickListener(this);
         initBanner();
         return view;
     }
@@ -107,7 +116,6 @@ public class CommonFrameFragment extends BaseFragment implements View.OnClickLis
     }
 
     public void initBanner() {
-
         ArrayList<Integer> list = new ArrayList<>();
         list.add(R.mipmap.parking_box_line);
         list.add(R.mipmap.parking_box_line);
@@ -123,8 +131,7 @@ public class CommonFrameFragment extends BaseFragment implements View.OnClickLis
                 startActivity(new Intent(Intent.ACTION_VIEW, uri));
                 break;
             case R.id.layout_coupon_manage:
-                Intent intent = new Intent(mContext, CouponActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(mContext, CouponActivity.class));
                 break;
             case R.id.layout_watch:
                 startActivity(new Intent(mContext, YueActivity.class));
@@ -132,8 +139,29 @@ public class CommonFrameFragment extends BaseFragment implements View.OnClickLis
             case R.id.layout_charge:
                 startActivity(new Intent(mContext, ChargeActivity.class));
                 break;
+            case R.id.layout_order:
+                if (VerifyLogin()!=null) {
+                    Intent intent=new Intent(mContext, OrderActivity.class);
+                    String UserId=getActivity().getIntent().getStringExtra("UserId");
+                    intent.putExtra("UserId",UserId);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.layout_parking_space:
+                startActivity(new Intent(mContext, ParkingSpaceActivity.class));
+                break;
             default:
                 break;
         }
+    }
+    public String VerifyLogin() {
+        Intent intent = getActivity().getIntent();
+        String UserId = intent.getStringExtra("UserId");
+        if (UserId != null) {
+            return UserId;
+        }
+        return null;
     }
 }

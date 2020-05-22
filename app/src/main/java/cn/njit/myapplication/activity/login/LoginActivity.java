@@ -1,5 +1,6 @@
 package cn.njit.myapplication.activity.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -151,9 +152,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                 UserApplication app=(UserApplication)getApplication();
                 app.setUserPhone(et_login_name.getText().toString());
+                Intent intent = new Intent();
+                intent.putExtra("userPhone", et_login_name.getText().toString());
+                setResult(RESULT_OK, intent);
+                finish();
             }
         });
-        this.finish();
     }
 
     @Override
@@ -197,4 +201,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
     }
+
 }
